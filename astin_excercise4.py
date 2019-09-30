@@ -1,4 +1,3 @@
-import time
 import pandas as pd
 import numpy as np
 from pandas import DataFrame, Series
@@ -66,80 +65,14 @@ class Gambler:
             return '100% for ruin'
 
         percentage_ruin = (1 - wins / (loses + wins)) * 100
-        return 'for {} percentage for ruin is {} %'.format(self.game_key, percentage_ruin)
+        return 'for {} percentage for ruin is {:.2f} %'.format(self.game_key, percentage_ruin)
 
 
 
-Vasya = Gambler(100, 1000000, 0.5)
+Vasya = Gambler(2, 4, 0.5)
 Vasya.fill_dataframe(100)
 first_sequence_game = Vasya.analyze_results()
-# Vasya.change_sequence(2, 4, 0.5)
-# Vasya.fill_dataframe(100)
-# second_sequence_game = Vasya.analyze_results()
-# print('First game: {}, second game: {}'.format(first_sequence_game, second_sequence_game))
-
-
-
-# money = 2
-# fortune = 4
-# probability = 0.5
-#
-# time_start = time.time()
-# def play_game(money, fortune, probability):
-#     while money != 0 and money != fortune:
-#         win_or_lose = np.random.choice(np.arange(0, 2), p=[1-probability, probability])
-#         if win_or_lose > 0:
-#             print('yoy')
-#             money += 1
-#         else:
-#             print('dich')
-#             money -= 1
-#     print(money)
-#     if money == 0:
-#         return 0
-#     else:
-#         return 1
-#
-# play_game(money, fortune, probability)
-#
-# def save_result(money, fortune, probability, n_times):
-#     save_array = []
-#     sequence_win = {}
-#     for n in range(n_times):
-#         win = play_game(money, fortune, probability)
-#         save_array.append(win)
-#     sequence = 'start:{}, fortune:{}, probability:{}'.format(money, fortune, probability)
-#     sequence_win[sequence] = save_array
-#     return sequence_win
-#
-# # print(save_result(money, fortune, probability, 100))
-#
-# df = pd.DataFrame()
-# def fill_dataframe(money, fortune, probability, n_times, df):
-#     array_of_columns = []
-#     key_of_df = 'start:{}, fortune:{}, probability:{}'.format(money, fortune, probability)
-#     sequence_win_dict = save_result(money, fortune, probability, n_times)
-#     df[key_of_df] = Series(sequence_win_dict[key_of_df])
-#     for column in df:
-#         array_of_columns.append(column)
-#
-#     return df
-#
-# def analyze_results(money, fortune, probability, df):
-#     key_of_df = 'start:{}, fortune:{}, probability:{}'.format(money, fortune, probability)
-#     wins_to_loses = df.groupby(df[key_of_df]).size()
-#     try:
-#         percentage_ruin =(1 - wins_to_loses[1] / (wins_to_loses[0] + wins_to_loses[1])) * 100
-#         return 'for {} percentage for ruin is {} %'.format(key_of_df, percentage_ruin)
-#     except KeyError:
-#         return 'Zero percents'
-#
-#
-#
-#
-# print(fill_dataframe(money, fortune, probability, 100, df))
-# # print(fill_dataframe(10,40,0.5, 10, df))
-# wins_to_loses = df.groupby(df['start:{}, fortune:{}, probability:{}'.format(money, fortune, probability)]).size()
-# print(analyze_results(money, fortune, probability, df))
-# time_stop = time.time()
-# print(time_stop-time_start)
+Vasya.change_sequence(10, 100, 0.5)
+Vasya.fill_dataframe(100)
+second_sequence_game = Vasya.analyze_results()
+print('First game: {}, second game: {}'.format(first_sequence_game, second_sequence_game))
