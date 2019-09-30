@@ -1,0 +1,1 @@
+In excercise 4 i have done algorithm for gambler ruin problem, for small numbers process don`t need plenty time, in case of 100 simulations the resulting answer is optimal. But in cases of high numbers, it needs plenty of time.

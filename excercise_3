@@ -1,0 +1,2 @@
+In 3rd excercise creating new numbers every second for each timeserie was done by means of thread. 
+Funcitons returnLast and maxLast20 should return dict, it was done. For my opinion, in my case, because of performing excercise with dataframe, better to return dataframe/series in this functions.
